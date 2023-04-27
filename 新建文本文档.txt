@@ -1,0 +1,3 @@
+D盘下  硬盘中的 yolo7即代码
+使用yolov7-pytorch-master环境
+对于数据集参照Messdior1200 
