@@ -2,12 +2,15 @@ import cv2
 import os
 import numpy as np
 from PIL import Image
-path=r'D:\Deep-Learing\NetModel\ganseg-master3.0\ganseg-master\hdb_to_canon_v1_result\hdb_to_canon_v1\testB'
+path=r'D:\Deep-Learing\NetModel\ganseg-master3.0\ganseg-master\hdb_to_canon_v1.2_result\hdb_to_canon_v1\testB'
 
 class hebin():
     def pj(self):
         filelist = os.listdir(path)  # 获取文件路径
         t=0
+        pic_new_path = os.path.join(path,"alter")
+        if not os.path.exists(pic_new_path):
+            os.makedirs(pic_new_path)
         for item in filelist:
             img_name = os.path.join(path, item)
             if item.endswith('pred.png') and item.startswith('testB'):  # 初始的图片的格式为jpg格式的（或者源文件是png格式及其

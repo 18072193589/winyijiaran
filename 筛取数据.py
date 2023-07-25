@@ -1,10 +1,10 @@
 from PIL import Image
 import os
 
-file_path = r"D:\Deep-Learing\DP-Data\Split-OCT\SW\lable"    # 原始图像路径
-
+file_path = r"D:\Deep-Learing\DP-Data\to zsj\AD\重庆所有患者视网膜分析"    # 原始图像路径
+target_path = r"D:\Deep-Learing\DP-Data\to zsj\after"    # 存储图像路径
 raw_files = os.walk(file_path)              # 遍历所有图像
-width, height = 1024, 1024                    # 修改后的图像尺寸大小
+width, height = 1024, 640                    # 修改后的图像尺寸大小
 
 
 

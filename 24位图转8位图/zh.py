@@ -1,4 +1,8 @@
+from PIL import Image
+import numpy as np
+import cv2
 import os
+
 
 
 class BatchRename():
@@ -7,7 +11,7 @@ class BatchRename():
     '''
 
     def __init__(self):
-        self.path = r'D:\Deep-Learing\NetModel\util\mIOU\rtvue_to_SW'  # 表示需要命名处理的文件夹
+        self.path = r'D:\Deep-Learing\DP-Data\Split-OCT\1024-3type-8-2\SW\alter1.4'  # 表示需要命名处理的文件夹
 
         #self.path2 = r'C:\Users\Administrator\Desktop\data_shuoming\fenkuai\img'  # 表示需要命名处理的文件夹
     def rename(self):
@@ -19,14 +23,13 @@ class BatchRename():
             if item.endswith('.png'):  # 初始的图片的格式为jpg格式的（或者源文件是png格式及其
                 # 他格式，后面的转换格式就可以调整为自己需要的格式即可）
                 src = os.path.join(os.path.abspath(self.path), item)
-                #dst = os.path.join(os.p ath.abspath(savedpath), str(i) + '.jpg')  # 处理后的格式也为jpg格式的，当然这里可以改成png格式
-                dst = os.path.join(os.path.abspath(self.path), '00' + format(str(i), '0>3s') + '_seg.png')    #这种情况下的命名格式为0000000.jpg形式，可以自主定义想要的格式
-                try:
-                    os.rename(src, dst)
-                    print('converting %s to %s ...' % (src, dst))
-                    i = i + 1
-                except:
-                    continue
+                img = cv2.imread(src)
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                src = os.path.join(os.path.abspath(self.path),"alter")
+                if not os.path.exists(src):
+                    os.makedirs(src)
+                src = os.path.join(os.path.abspath(self.path), "alter", item)
+                cv2.imwrite(src, img)  # 填转换后的图片存储地址，若在同一目录，则注意不要重名
         print('total %d to rename & converted %d jpgs' % (total_num, i))
 
 
