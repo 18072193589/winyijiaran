@@ -8,7 +8,7 @@ import pandas as pd
 
 class remask():
     def __init__(self):
-        self.path = r'D:\Deep-Learing\DP-Data\Split-OCT\1024-3type-8-2\SW\lable'
+        self.path = r'D:\Deep-Learing\DP-Data\PD\MCI\mask'
 
     def msk(self):
         filelist = os.listdir(self.path)
